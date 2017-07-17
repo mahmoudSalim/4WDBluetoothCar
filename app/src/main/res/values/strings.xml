@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">4WD Bluetooth Car</string>
+    <string name="switch_start">"start "</string>
+    <string name="CBox_auto">Auto Drive</string>
+    <string name="CBox_hor_acc">H_accelerometer</string>
+    <string name="CBox_ver_acc">V_accelerometer</string>
+    <string name="one_hand_btn">One Hand Mode</string>
+    <string name="break_btn">_____</string>
+</resources>
