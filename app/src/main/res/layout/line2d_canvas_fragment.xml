@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_line2d"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    android:divider="?android:attr/dividerHorizontal"
+    android:showDividers="beginning"
+    android:paddingTop="16dp">
+
+    <com.example.kai.mulitactivityapp.PathDrawView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.30"
+        android:gravity="top"
+        android:id="@+id/canvas"
+        android:visibility="visible"/>
+
+    <Button
+        android:text="@string/send_track"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/send_track_btn" />
+
+</LinearLayout>

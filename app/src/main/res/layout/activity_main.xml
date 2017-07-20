@@ -68,8 +68,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_height="251dp">
 
                     <Button
                         android:id="@+id/left_btn"
@@ -92,14 +91,6 @@
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/one_hand_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:text="@string/one_hand_btn"
-                        android:textAllCaps="false" />
-
-                    <Button
                         android:id="@+id/break_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -107,7 +98,22 @@
                         android:text="@string/break_btn"
                         android:textAllCaps="false" />
 
+                    <Button
+                        android:id="@+id/line2D_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/line_track"
+                        android:textAllCaps="false" />
+
                 </RelativeLayout>
+
+                <Button
+                    android:id="@+id/one_hand_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/joyStick_btn"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
 

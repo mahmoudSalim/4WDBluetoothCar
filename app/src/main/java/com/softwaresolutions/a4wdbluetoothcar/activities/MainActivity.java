@@ -1,3 +1,4 @@
+
 package com.softwaresolutions.a4wdbluetoothcar.activities;
 
 import android.bluetooth.BluetoothAdapter;
@@ -24,11 +25,14 @@ import android.widget.Toast;
 
 import com.softwaresolutions.a4wdbluetoothcar.R;
 import com.softwaresolutions.a4wdbluetoothcar.fragments.JoyStickFragment;
+import com.softwaresolutions.a4wdbluetoothcar.fragments.Line2D_CanvasFragment;
+import com.softwaresolutions.a4wdbluetoothcar.generated.PathDrawView;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -70,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private BluetoothDevice device;
 
     private static BluetoothSocket socket;
-    private static OutputStream outputStream;
+    public static OutputStream outputStream;
     private static InputStream inputStream;
     private static boolean deviceConnected = false;
 
@@ -91,6 +95,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private CheckBox auto, hAcc, vAcc;
     private Button up, down, left, right, breakBtn, oneHand;
     private RadioGroup gearsGroup;
+
+    public static int pathViewHeight;
+    public static PathDrawView pathView;
+    private Button lineTrack;
+    public List<String> stringList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +125,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         oneHand = (Button) findViewById(R.id.one_hand_btn);
 
         gearsGroup = (RadioGroup) findViewById(R.id.gears_group);
+
+        pathView = (PathDrawView)findViewById(R.id.canvas);
+
+        lineTrack = (Button) findViewById(R.id.line2D_btn);
+        pathView.setswapButton(lineTrack);
+
+
+        lineTrack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pathView.resetObstacleDetected();
+
+                Line2D_CanvasFragment fragment = new Line2D_CanvasFragment();
+                getSupportFragmentManager().beginTransaction().add(R.id.app_layout, fragment).addToBackStack(null).commit();
+
+            }
+        });
 
         //OnTouchListener code for the forward button (button long press)
         up.setOnTouchListener(new View.OnTouchListener() {
@@ -349,6 +376,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         sensorManager.unregisterListener(this);
 
+    }
+
+    @Override
+    protected void onRestart() {
+        pathView.validateLine();
+        pathView.invalidate();
+        super.onRestart();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        pathViewHeight = pathView.getHeight();
     }
 
     @Override

@@ -1,3 +1,4 @@
+
 package com.softwaresolutions.a4wdbluetoothcar.fragments;
 
 import android.content.pm.ActivityInfo;
